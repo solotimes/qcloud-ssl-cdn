@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -u
+set -ue
 
 if [ "${ACME_ENABLED:=true}" = "true" ]; then
   # 使用acme获取/更新证书
@@ -67,13 +67,9 @@ DELETE_OLD_CERTS = True
 UPDATE_SSL = True
 CERT_ID = ""
 # 是否进行预热URL的操作
-PUSH_URL = True
+PUSH_URL = False
 # 是否进行刷新URL的操作
-PURGE_URL = True
-# 自定义的预热URL（默认会预热sitemap.xml的所有链接）文件路径
-# 该文件内，每行一个URL，例如
-# https://blog.whuzfb.cn/img/me2.jpg
-# https://blog.whuzfb.cn/img/home-bg.jpg
+PURGE_URL = False
 URLS_FILE = "urls.txt"
 # 仅用于边缘安全加速平台EO更换SSL证书，不用于CDN
 # 区域ID：可以手动利用函数get_teo_zones_list获取所有的加速区域ID；格式为 zone-xxxxxx
